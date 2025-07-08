@@ -1,38 +1,34 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Instala las dependencias de Laravel: composer install
 
-### What is this repository for? ###
+Copia el archivo .env: cp .env.example .env
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Configura la conexión a la base de datos en .env:
 
-### How do I get set up? ###
+DB_CONNECTION=mysql DB_PASSWORD= DB_HOST=127.0.0.1 DB_PORT=3306 DB_DATABASE=prueba DB_USERNAME=root
 
-* Summary of set up
+Genera la clave de la aplicación:
 
-* Configuration
-composer create-project laravel/laravel backend
+php artisan key:generate
 
-ng new frontend
+Ejecuta las migraciones:
 
-* Dependencies
-    npm install -g @angular/cli
-    composer install
-* Database configuration
-* How to run tests
-* Deployment instructions
+php artisan migrate
 
-### Contribution guidelines ###
+Iniciar servdor
 
-* Writing tests
-* Code review
-* Other guidelines
+php artisan serve
 
-### Who do I talk to? ###
+  FRONTEND
+cd frontend
 
-* Repo owner or admin
-* Other community or team contact
+Instala las dependencias:
+
+npm install
+
+Inicia la aplicación Angular:
+
+ng serve
 
 
