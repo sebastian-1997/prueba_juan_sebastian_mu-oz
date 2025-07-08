@@ -1,0 +1,43 @@
+<div class="busqueda-container">
+  <h1>Buscador de Personajes</h1>
+  <div class="buscador-box">
+    <input
+      type="text"
+      [(ngModel)]="terminoBusqueda"
+      placeholder="🔍 Escribe un personaje..."
+    />
+    <button (click)="buscar()">Buscar</button>
+  </div>
+
+  <p *ngIf="mensaje()">{{ mensaje() }}</p>
+
+  <div class="resultados-grid">
+    <div
+      class="personaje-card"
+      *ngFor="let p of personajes()"
+      (click)="seleccionar(p)"
+    >
+      <img [src]="p.image" [alt]="p.name" />
+      <h3>{{ p.name }}</h3>
+      <span>{{ p.species }} | {{ p.status }}</span>
+    </div>
+  </div>
+
+  <div *ngIf="personajeSeleccionado()"  class="modal-overlay">
+    <div class="modal">
+      <button class="cerrar" (click)="cerrarModal()">✖</button>
+      <img [src]="personajeSeleccionado()?.image" class="modal-img" />
+      <h2>{{ personajeSeleccionado()?.name }}</h2>
+      <p><strong>Género:</strong> {{ personajeSeleccionado()?.gender }}</p>
+      <p><strong>Estado:</strong> {{ personajeSeleccionado()?.status }}</p>
+      <p><strong>Especie:</strong> {{ personajeSeleccionado()?.species }}</p>
+      <p><strong>Locación:</strong> {{ personajeSeleccionado()?.location?.name }}</p>
+      <button class="importar" (click)="importar(personajeSeleccionado())">Importar</button>
+    </div>
+  </div>
+
+  <button class="btn btn-primary shadow-sm" (click)="irAReportes()">Reportes</button>
+
+ 
+
+</div>

@@ -11,8 +11,15 @@ This README would normally document whatever steps are necessary to get your app
 ### How do I get set up? ###
 
 * Summary of set up
+
 * Configuration
+composer create-project laravel/laravel backend
+
+ng new frontend
+
 * Dependencies
+    npm install -g @angular/cli
+    composer install
 * Database configuration
 * How to run tests
 * Deployment instructions
@@ -27,3 +34,5 @@ This README would normally document whatever steps are necessary to get your app
 
 * Repo owner or admin
 * Other community or team contact
+
+

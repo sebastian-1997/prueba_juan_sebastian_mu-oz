@@ -1,0 +1,87 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">📊 Reportes de Personajes</h2>
+
+  <!-- Botones de selección -->
+  <div class="d-flex justify-content-center gap-3 mb-4">
+    <button class="btn btn-outline-primary" (click)="mostrarReporte('ordenado')">📅 Personajes ordenados</button>
+    <button class="btn btn-outline-success" (click)="mostrarReporte('episodio')">🎬 Por Episodio</button>
+    <button class="btn btn-outline-warning" (click)="mostrarReporte('locacion')">🌍 Por Locación</button>
+  </div>
+
+  <!-- Reporte: Personajes ordenados -->
+  <div *ngIf="reporteActivo === 'ordenado'" class="card mb-4 shadow-sm fade-in">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">📅 Personajes ordenados por fecha de aparición</h5>
+    </div>
+    <div class="card-body table-responsive">
+      <table class="table table-striped align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Personaje</th>
+            <th>Primer Episodio</th>
+            <th>Fecha de Emisión</th>
+            <th>Antigüedad (días)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of reporteOrdenado()">
+            <td>{{ item.personaje }}</td>
+            <td>{{ item.primer_episodio }}</td>
+            <td>{{ item.fecha_emision }}</td>
+            <td>{{ item.antiguedad_dias }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Reporte: Personajes por Episodio -->
+  <div *ngIf="reporteActivo === 'episodio'" class="card mb-4 shadow-sm fade-in">
+    <div class="card-header bg-success text-white">
+      <h5 class="mb-0">🎬 Cantidad de personajes por episodio</h5>
+    </div>
+    <div class="card-body table-responsive">
+      <table class="table table-bordered table-striped align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Episodio</th>
+            <th>Total de Personajes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of reportePorEpisodio()">
+            <td>{{ item.episodio }}</td>
+            <td>{{ item.cantidad_personajes }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Reporte: Personajes por Locación -->
+  <div *ngIf="reporteActivo === 'locacion'" class="card mb-4 shadow-sm fade-in">
+    <div class="card-header bg-warning text-dark">
+      <h5 class="mb-0">🌍 Personajes por locación</h5>
+    </div>
+    <div class="card-body table-responsive">
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Locación</th>
+            <th>Personajes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of reportePorLocacion()">
+            <td><strong>{{ item.locacion }}</strong></td>
+            <td>
+              <ul class="mb-0">
+                <li *ngFor="let p of item.personajes">{{ p }}</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
